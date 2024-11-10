@@ -11,10 +11,10 @@
 
 - Create `.env` and copy `.env.dist`
 
-- `npm run start:dev`
-
 For this we will run the script `npm run migration:run` which will run the migrations that it has in the folder `/data/migrations`.
 This script will generate the `mutant` and `dna` tables.
+
+- `npm run start:dev`
 
 ## Endpoints and modules
 
