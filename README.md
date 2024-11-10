@@ -5,12 +5,16 @@
 
 ## Initialization
 
-As a first step `npm install` to install all necessary dependencies
+- Run database container using `docker-compose up -d` or `docker compose up -d` depending on your operating system
 
-As a second step, create a `.env` file and add the environment variables found in the `.env.dist` example, this will allow the server to connect to the database container.
+- `npm install` to install all necessary dependencies
 
-As a third step, once the server is running, we must run the database migrations.
+- Create `.env` and copy `.env.dist`
+
+- `npm run start:dev`
+
 For this we will run the script `npm run migration:run` which will run the migrations that it has in the folder `/data/migrations`.
+This script will generate the `mutant` and `dna` tables.
 
 ## Endpoints and modules
 
