@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { MutantModule } from './modules/mutant/mutant.module';
+import { DnaModule } from './modules/dna_stats/dna.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { ConfigModule } from '@nestjs/config';
       database: process.env.DB_NAME,
       synchronize: false,
     }),
+    MutantModule,
+    DnaModule,
   ],
 })
 export class AppModule {
