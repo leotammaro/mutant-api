@@ -16,35 +16,19 @@ This script will generate the `mutant` and `dna` tables.
 
 - `npm run start:dev`
 
-## Endpoints and modules
+## Tests
 
-`Mutant module`
+- `npm run test`
+- `npm run test:cove` to show coverage of code.
 
-`http://localhost:${PORT}/mutant`
+## Deploy
 
-```
-@Post
+https://mutant-api-seven.vercel.app/
 
-request: {
-  body: {
-    dna: string[]
-}
-}
+## Swagger
 
-```
+To view the documentation, check the `/api` endpoint.
 
-`Dna module`
+https://mutant-api-seven.vercel.app/api
 
-`http://localhost:${PORT}/dna/stats`
-
-```
-@Get
-
-response: {
-  mutants_count: number,
-  humans_count:number
-  ratio: number
-}
-
-
-```
+It describes the different routes and examples of responses.
