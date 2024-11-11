@@ -12,11 +12,6 @@ export class ValidateThatAllArgumentsHaveTheSameLength
   implements ValidatorConstraintInterface
 {
   validate(dna: string[]) {
-    const lettersAllowed = ['A', 'T', 'C', 'G'];
-    const dnaToString = dna.join('').toUpperCase();
-    if (!lettersAllowed.some((letter) => dnaToString.includes(letter))) {
-      return false;
-    }
     return dna.every((dnaStr) => dnaStr.length === dna[0].length);
   }
 
