@@ -7,11 +7,7 @@ import { DnaStats } from '../infrastructure/database/dna.stats.entity';
 export class DnaStatsService implements IDnaStatsService {
   constructor(private readonly repository: DnaStatsRepository) {}
   isvalidDna(rows: string[][], columns: string[][]) {
-    if (
-      rows.length !== columns.length ||
-      rows.length < 4 ||
-      columns.length < 4
-    ) {
+    if (rows.length !== columns.length) {
       throw new NotFoundException(
         'This dna is not valid for a human or a mutant. Verify that it is an NXN type dna.',
       );

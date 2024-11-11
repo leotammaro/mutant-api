@@ -38,29 +38,21 @@ export class MutantService {
   }
   isMutant(dna: string[]): boolean {
     const matrix = this.matrixHelper.convertArrayOfStringsToMatrix(dna);
-    const MIN_SEQUENCE_TO_BE_MUTANT = 2;
     const rows = this.rowsExtractor.getRows(matrix);
     const columns = this.columnsExtractor.getColumns(matrix);
 
     this.statsService.isvalidDna(rows, columns);
 
-    const diagonals = this.diagonalsExtractor.getDiagonals(matrix);
-    let totalOfSequences = 0;
-
-    for (let i = 0; i < dna.length; i++) {
-      if (
-        this.matrixHelper.hasIndenticalLetters(rows[i]) ||
-        this.matrixHelper.hasIndenticalLetters(columns[i]) ||
-        this.matrixHelper.hasIndenticalLetters(diagonals[i])
-      ) {
-        totalOfSequences += 1;
-
-        if (totalOfSequences >= MIN_SEQUENCE_TO_BE_MUTANT) {
-          return true;
-        }
-      }
+    if (rows.length < 4 || columns.length < 4) {
+      return false;
     }
-    return false;
+    const diagonals = this.diagonalsExtractor.getDiagonals(matrix);
+    return this.matrixHelper.hasSufficientIdenticalSequences(
+      dna,
+      rows,
+      columns,
+      diagonals,
+    );
   }
 
   async validateMutant(dna: string[]): Promise<string[]> {
