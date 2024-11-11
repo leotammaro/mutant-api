@@ -42,7 +42,7 @@ export class MutantService {
     const rows = this.rowsExtractor.getRows(matrix);
     const columns = this.columnsExtractor.getColumns(matrix);
 
-    this.statsService.isHuman(rows, columns);
+    this.statsService.isvalidDna(rows, columns);
 
     const diagonals = this.diagonalsExtractor.getDiagonals(matrix);
     let totalOfSequences = 0;
