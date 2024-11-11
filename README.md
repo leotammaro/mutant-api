@@ -19,7 +19,7 @@ This script will generate the `mutant` and `dna` tables.
 ## Tests
 
 - `npm run test`
-- `npm run test:cove` to show coverage of code.
+- `npm run test:cov` to show coverage of code.
 
 ## Deploy
 
