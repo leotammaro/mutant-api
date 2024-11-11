@@ -69,7 +69,9 @@ describe('Mutants module', () => {
         })
         .expect(404)
         .then(({ body }) => {
-          expect(body.message).toBe('Its not human');
+          expect(body.message).toBe(
+            'This dna is not valid for a human or a mutant. Verify that it is an NXN type dna.',
+          );
         });
     });
     it('should return fordbidden response because its non-mutant', () => {
