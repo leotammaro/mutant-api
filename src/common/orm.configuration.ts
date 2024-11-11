@@ -11,6 +11,7 @@ export const ormConfig: DataSourceOptions = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   synchronize: false,
+  ssl: true,
 };
 
 export default new DataSource({
