@@ -1,5 +1,8 @@
 import { IsArray, IsString, Validate } from 'class-validator';
-import { ValidateThatAllArgumentsHaveTheSameLength } from '../validators/dna.arguments.validator';
+import {
+  ValidateThatAllArgumentsHaveTheSameLength,
+  ValidateTheAllowedLetter,
+} from '../validators/dna.arguments.validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { MUTANT_DNA } from '../../interface/__test__/helpers/mutant.constants';
 
@@ -8,5 +11,6 @@ export class MutantDto {
   @IsArray()
   @IsString({ each: true })
   @Validate(ValidateThatAllArgumentsHaveTheSameLength)
+  @Validate(ValidateTheAllowedLetter)
   dna: string[];
 }

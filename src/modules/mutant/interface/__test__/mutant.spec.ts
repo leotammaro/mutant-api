@@ -54,10 +54,11 @@ describe('Mutants module', () => {
         })
         .expect(400)
         .then(({ body }) => {
-          expect(body.message[0]).toBe(
+          expect(body.message[0]).toBe('Only the letters A T C G are allowed.');
+          expect(body.message[1]).toBe(
             'All arguments that are part of the dna must have the same length.',
           );
-          expect(body.message[1]).toBe('each value in dna must be a string');
+          expect(body.message[2]).toBe('each value in dna must be a string');
         });
     });
 
@@ -80,6 +81,26 @@ describe('Mutants module', () => {
         .send({
           dna: NON_MUTANT_DNA,
         })
+        .expect(403);
+    });
+
+    it('must validate that this DNA belongs to a mutant', () => {
+      const dna = ['ATCG', 'ATCG', 'ATCG', 'ATCG'];
+      return request(app.getHttpServer())
+        .post('/mutant')
+        .send({ dna })
+        .expect(200)
+        .then(({ body }) => {
+          expect(body).toEqual(dna);
+        });
+    });
+
+    it('It should return forbidden because the NXN dna is better than 4, so it could not be mutant.', () => {
+      const invalidDnaToBeMutant = ['TAC', 'TAC', 'TAC'];
+
+      return request(app.getHttpServer())
+        .post('/mutant')
+        .send({ dna: invalidDnaToBeMutant })
         .expect(403);
     });
   });
